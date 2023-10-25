@@ -2,11 +2,13 @@ project-root/
 |-- microservices/
 |   |-- service1/
 |   |   |-- main.go
+|   |   |-- main_test.go     
 |   |   |-- Dockerfile
 |   |   |-- ...
 |   |
 |   |-- service2/
 |   |   |-- main.go
+|   |   |-- main_test.go     
 |   |   |-- Dockerfile
 |   |   |-- ...
 |   |
@@ -36,5 +38,5 @@ project-root/
 |
 |-- README.md
 |-- .gitignore
-|-- ...
+|   |-- ...
 
