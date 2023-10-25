@@ -1,5 +1,6 @@
 # project-root
 Folder and file structure for microservice architecture in GCP and Terraform usage
+
 microservices/: This folder contains directories for each microservice. Each microservice directory contains source code (such as main.go), a Docker file for containerization, and other files specific to the microservice.
 
 terraform/: This folder contains Terraform configuration files for building and managing infrastructure in GCP. The files main.tf, variables.tf, and outputs.tf are used to describe and configure resources, and the terraform.tfvars file contains configuration variables.
