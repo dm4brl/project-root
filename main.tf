@@ -26,3 +26,8 @@ resource "google_sql_database_instance" "database" {
 
 # И так далее для других ресурсов...
 
+project = var.project_name
+region  = var.region
+zone    = var.zone
+
+# И так далее...
