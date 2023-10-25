@@ -1,0 +1,36 @@
+# Deployment-blue.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: myapp
+        version: blue
+    spec:
+      containers:
+      - name: myapp-container
+        image: myapp:v1-blue  # Образ "blue" версии
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-blue-service
+spec:
+  selector:
+    app: myapp
+    version: blue
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer  # Измените тип сервиса в зависимости от требований
