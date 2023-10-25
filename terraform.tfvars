@@ -1,3 +1,8 @@
+gcp_project       = "your-gcp-project-id"
+credentials_file  = "path/to/your-service-account-key.json"
+region            = "us-central1"
+
+
 # Название проекта
 project_name = "my-microservices-project"
 
