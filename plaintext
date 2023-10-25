@@ -1,0 +1,40 @@
+project-root/
+|-- microservices/
+|   |-- service1/
+|   |   |-- main.go
+|   |   |-- Dockerfile
+|   |   |-- ...
+|   |
+|   |-- service2/
+|   |   |-- main.go
+|   |   |-- Dockerfile
+|   |   |-- ...
+|   |
+|   |-- ...
+|
+|-- terraform/
+|   |-- main.tf
+|   |-- variables.tf
+|   |-- outputs.tf
+|   |-- terraform.tfvars
+|   |-- ...
+|
+|-- kubernetes/
+|   |-- deployment.yaml
+|   |-- service.yaml
+|   |-- ...
+|
+|-- config/
+|   |-- service1-config.yaml
+|   |-- service2-config.yaml
+|   |-- ...
+|
+|-- scripts/
+|   |-- deploy.sh
+|   |-- destroy.sh
+|   |-- ...
+|
+|-- README.md
+|-- .gitignore
+|-- ...
+
