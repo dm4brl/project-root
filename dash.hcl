@@ -34,3 +34,8 @@ resource "google_compute_url_map" "url_map" {
     }
   }
 }
+resource "google_compute_target_http_proxy" "http_proxy" {
+  name        = "my-http-proxy"
+  url_map     = google_compute_url_map.url_map.self_link
+  description = "HTTP Proxy for load balancer"
+}
