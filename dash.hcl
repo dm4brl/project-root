@@ -39,3 +39,8 @@ resource "google_compute_target_http_proxy" "http_proxy" {
   url_map     = google_compute_url_map.url_map.self_link
   description = "HTTP Proxy for load balancer"
 }
+resource "google_compute_global_forwarding_rule" "forwarding_rule" {
+  name       = "my-forwarding-rule"
+  target     = google_compute_target_http_proxy.http_proxy.self_link
+  port_range = "80"
+}
