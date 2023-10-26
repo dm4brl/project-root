@@ -44,3 +44,12 @@ resource "google_compute_global_forwarding_rule" "forwarding_rule" {
   target     = google_compute_target_http_proxy.http_proxy.self_link
   port_range = "80"
 }
+resource "google_project_service" "monitoring" {
+  project = var.project_id
+  service = "monitoring.googleapis.com"
+}
+
+resource "google_project_service" "logging" {
+  project = var.project_id
+  service = "logging.googleapis.com"
+}
