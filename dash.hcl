@@ -53,3 +53,53 @@ resource "google_project_service" "logging" {
   project = var.project_id
   service = "logging.googleapis.com"
 }
+resource "google_monitoring_uptime_check_config" "dashboard_check" {
+  display_name = "Dashboard Uptime Check"
+  monitored_resource_types = ["gce_instance"]
+  http_check {
+    use_ssl = false
+    path = "/dashboard" # Путь к вашему дашборду
+    port = 8080 # Порт, на котором работает дашборд
+    request_method = "GET"
+    validate_ssl = false
+  }
+  timeout = "5s"
+  period = "60s"
+  project = var.project_id
+}
+
+resource "google_monitoring_notification_channel" "email_channel" {
+  display_name = "Email Channel"
+  type         = "email"
+  labels = {
+    email_address = "your@email.com"
+  }
+}
+
+resource "google_monitoring_alert_policy" "dashboard_alert" {
+  display_name = "Dashboard Alert Policy"
+  conditions {
+    display_name = "Dashboard is down"
+    display_name = "Dashboard is down"
+    condition_threshold {
+      filter             = 'metric.type="monitoring.googleapis.com/uptime_check/downtime"'
+      comparison_type    = "COMPARISON_TYPE_UNSPECIFIED"
+      aggregations {
+        alignment_period  = "60s"
+        per_series_aligner = "ALIGN_RATE"
+      }
+      threshold_value    = 1.0
+      duration           = "60s"
+      aggregations {
+        alignment_period  = "60s"
+        per_series_aligner = "ALIGN_RATE"
+      }
+      comparison_type    = "COMPARISON_TYPE_UNSPECIFIED"
+      aggregations {
+        alignment_period  = "60s"
+        per_series_aligner = "ALIGN_RATE"
+      }
+    }
+  }
+  notification_channels = [google_monitoring_notification_channel.email_channel.name]
+}
